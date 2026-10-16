@@ -31,4 +31,9 @@ def greeting(name: str):
         "developer": "Khaled",  # Remplacez par votre nom ou "Dev2" selon vos consignes
         "hostname": socket.gethostname(),
         "IP": get_local_ip()
+@app.get("/addition")
+def addition(a: int, b: int):
+    return {
+        "le est result a+b=": a + b,
+        "developer": "Dev1"
     }
