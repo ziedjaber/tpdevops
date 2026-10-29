@@ -31,7 +31,7 @@ def read_root():
 def greeting(name: str):
     return {
         "message": f"Hello {name}",
-        "developer": "Khaled",  # Remplacez par votre nom ou "Dev2" selon vos consignes
+        "developer": "Khaled",
         "hostname": socket.gethostname(),
         "IP": get_local_ip()
     }
@@ -58,11 +58,11 @@ def divide(data: DivisionRequest):
 
     return {
         "result a/b=": data.a / data.b,
-        "developer": "Dev2"
+        "developer": "Dev2"}
 class Numbers(BaseModel):
     a: float
     b: float
-
+    
 @app.post("/multiply")
 def multiply_numbers(nums: Numbers):
     result = nums.a * nums.b
