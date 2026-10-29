@@ -1,4 +1,6 @@
 from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
+from pydantic import BaseModel
 import socket
 from pydantic import BaseModel
 
@@ -57,4 +59,14 @@ def divide(data: DivisionRequest):
     return {
         "result a/b=": data.a / data.b,
         "developer": "Dev2"
+class Numbers(BaseModel):
+    a: float
+    b: float
+
+@app.post("/multiply")
+def multiply_numbers(nums: Numbers):
+    result = nums.a * nums.b
+    return {
+        "result a*b=": result,
+        "developer": "Leader"
     }
