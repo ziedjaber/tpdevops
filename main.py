@@ -103,3 +103,20 @@ def update_item(id: int, item: ItemUpdate):
         "item": items[id],
         "developer": "Dev2"
     }
+
+@app.delete("/remove/{id}")
+def remove_item(id: int):
+    if id not in items:
+        raise HTTPException(
+            status_code=404,
+            detail="Item not found"
+        )
+    
+    # Supprimer l'élément du dictionnaire
+    deleted_item = items.pop(id)
+
+    return {
+        "message": f"Item with id {id} has been successfully deleted",
+        "deleted_item": deleted_item,
+        "developer": "Dev1"
+    }
