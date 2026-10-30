@@ -68,10 +68,38 @@ def multiply_numbers(nums: Numbers):
         "result a*b=": result,
         "developer": "Leader"
     }
-@app.delete("/remove/{id}")
-def remove_item(id: int):
-    # Logique de suppression fictive pour le TP
+    
+    
+    
+items = {
+    1: {"name": "Computer", "price": 1200},
+    2: {"name": "Keyboard", "price": 50},
+    3: {"name": "Mouse", "price": 25}
+}
+
+
+class ItemUpdate(BaseModel):
+    name: str
+    price: float
+
+
+@app.put("/update/{id}")
+def update_item(id: int, item: ItemUpdate):
+
+    if id not in items:
+        raise HTTPException(
+            status_code=404,
+            detail="Item not found"
+        )
+
+    items[id] = {
+        "name": item.name,
+        "price": item.price
+    }
+
     return {
-        "message": f"Item with id {id} has been successfully deleted",
-        "developer": "Dev1" # Adapte selon ton rôle ou ton nom
+        "message": "Item updated successfully",
+        "id": id,
+        "item": items[id],
+        "developer": "Dev2"
     }
