@@ -1,8 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from fastapi import FastAPI
 from pydantic import BaseModel
 import socket
-from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -69,4 +67,39 @@ def multiply_numbers(nums: Numbers):
     return {
         "result a*b=": result,
         "developer": "Leader"
+    }
+    
+    
+    
+items = {
+    1: {"name": "Computer", "price": 1200},
+    2: {"name": "Keyboard", "price": 50},
+    3: {"name": "Mouse", "price": 25}
+}
+
+
+class ItemUpdate(BaseModel):
+    name: str
+    price: float
+
+
+@app.put("/update/{id}")
+def update_item(id: int, item: ItemUpdate):
+
+    if id not in items:
+        raise HTTPException(
+            status_code=404,
+            detail="Item not found"
+        )
+
+    items[id] = {
+        "name": item.name,
+        "price": item.price
+    }
+
+    return {
+        "message": "Item updated successfully",
+        "id": id,
+        "item": items[id],
+        "developer": "Dev2"
     }
