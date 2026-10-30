@@ -70,3 +70,10 @@ def multiply_numbers(nums: Numbers):
         "result a*b=": result,
         "developer": "Leader"
     }
+@app.delete("/remove/{id}")
+def remove_item(id: int):
+    # Logique de suppression fictive pour le TP
+    return {
+        "message": f"Item with id {id} has been successfully deleted",
+        "developer": "Dev1" # Adapte selon ton rôle ou ton nom
+    }
