@@ -1,0 +1,10 @@
+image: python:3.12
+
+stages:
+  - test
+
+run-test:
+  stage: test
+  script:
+    - pip install fastapi httpx pytest
+    - pytest -v

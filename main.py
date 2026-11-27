@@ -41,6 +41,14 @@ def addition(a: int, b: int):
         "developer": "Dev1"
     }
 
+# soustraction
+@app.get("/soustraction")
+def soustraction(a: int, b: int):
+    return {
+        "result a-b=": a - b,
+        "developer": "Dev2"
+    }
+
 class DivisionRequest(BaseModel):
     a: float
     b: float
