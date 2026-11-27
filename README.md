@@ -1,9 +1,13 @@
-# Mon Projet FastAPI
+# TP3 — Intégration Continue (FastAPI)
 
-## 1. Lancer l'application
+API **FastAPI** développée dans le cadre du module *Plateforme collaborative et intégration continue (DevOps)*.
 
-Pour lancer l'application avec Uvicorn, assurez-vous d'avoir activé votre environnement virtuel et installé les dépendances, puis exécutez la commande suivante :
+## 1. Lancer l'application en local
+
+Activez votre environnement virtuel et installez les dépendances :
 
 ```bash
-uvicorn main:app --reload
-```
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+pip install fastapi uvicorn pytest pytest-cov httpx pylint
